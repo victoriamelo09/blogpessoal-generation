@@ -25,7 +25,7 @@ public class SwaggerConfig {
 								.url("https://www.linkedin.com/in/victória-melo-a143b9171/")
 								.email("vitoria.melo0901@hotmail.com")))
 				.externalDocs(new ExternalDocumentation().description("Demais projetos no Github")
-						.url("https://github.com/victoriamelo09/projeto_integrador_gen.git"));
+						.url("https://github.com/victoriamelo09?tab=repositories"));
 	}
 
 	@Bean

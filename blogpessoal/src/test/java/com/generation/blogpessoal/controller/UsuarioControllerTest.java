@@ -50,7 +50,7 @@ public class UsuarioControllerTest {
 		HttpEntity<Usuario> corpoRequisicao = new HttpEntity<Usuario>(new Usuario(0L, "Paulo Antunes",
 				"paulo_antunes@email.com.br", "13465278", "https://i.imgur.com/JR7kUFU.jpg"));
 
-		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST,
+		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuario/cadastrar", HttpMethod.POST,
 				corpoRequisicao, Usuario.class);
 
 		assertEquals(HttpStatus.CREATED, corpoResposta.getStatusCode());
@@ -69,7 +69,7 @@ public class UsuarioControllerTest {
 		HttpEntity<Usuario> corpoRequisicao = new HttpEntity<Usuario>(new Usuario(0L, "Maria da Silva",
 				"maria_silva@email.com.br", "13465278", "https://i.imgur.com/T12NIp9.jpg"));
 
-		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST,
+		ResponseEntity<Usuario> corpoResposta = testRestTemplate.exchange("/usuario/cadastrar", HttpMethod.POST,
 				corpoRequisicao, Usuario.class);
 
 		assertEquals(HttpStatus.BAD_REQUEST, corpoResposta.getStatusCode());
@@ -88,7 +88,7 @@ public class UsuarioControllerTest {
 		HttpEntity<Usuario> corpoRequisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
 		ResponseEntity<Usuario> corpoResposta = testRestTemplate.withBasicAuth("root@root.com", "rootroot")
-				.exchange("/usuarios/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
+				.exchange("/usuario/atualizar", HttpMethod.PUT, corpoRequisicao, Usuario.class);
 
 		assertEquals(HttpStatus.OK, corpoResposta.getStatusCode());
 		assertEquals(corpoRequisicao.getBody().getNome(), corpoResposta.getBody().getNome());
@@ -106,7 +106,7 @@ public class UsuarioControllerTest {
 				"https://i.imgur.com/Sk5SjWE.jpg"));
 
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root@root.com", "rootroot")
-				.exchange("/usuarios/all", HttpMethod.GET, null, String.class);
+				.exchange("/usuario/all", HttpMethod.GET, null, String.class);
 
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
 
